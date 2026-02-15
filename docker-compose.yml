@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_PORT}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./tmp/db-data:/var/lib/postgresql/data
+  anarchive:
+    build: .
+    container_name: anarchive
+    ports:
+      - "${PORT}:3000"
+    depends_on:
+      - postgres
+    env_file: .env
+
+networks:
+  default:
+    name: anarchive-network

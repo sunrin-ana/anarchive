@@ -1,7 +1,7 @@
 package pkg
 
 import (
-	"analog-be/entity"
+	"anarchive/entity"
 	"context"
 )
 

@@ -4,12 +4,9 @@ import "time"
 
 type UploadSession struct {
 	ID        string    `bun:"type:uuid,default:gen_random_uuid()"`
-	Namespace string    `bun:"type:varchar(512),notnull"`
-	BucketID  int64     `bun:"bucket_id,notnull"`
-	Bucket    *Bucket   `bun:"rel:belongs-to,join:bucket_id=id"`
+	ArchiveID int64     `bun:"archive_id,notnull"`
+	Archive   *Archive  `bun:"rel:has-one,join:archive_id=id"`
 	Target    string    `bun:"target"`
-	State     int       `bun:"state,notnull"`
-	RefID     int64     `bun:"ref_id,notnull"`
 	CreatedAt time.Time `bun:"created_at,notnull"`
 	ExpireAt  time.Time `bun:"expire_at,notnull"`
 }

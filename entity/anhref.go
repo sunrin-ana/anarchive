@@ -6,7 +6,7 @@ type Anhref struct {
 	ID        string    `bun:"type:uuid,notnull"`
 	Name      string    `bun:"name,notnull"`
 	Namespace string    `bun:"namespace,notnull"`
-	BucketID  int64     `bun:"bucket_id,notnull"`
+	BucketID  string    `bun:"bucket_id,notnull"`
 	Bucket    *Bucket   `bun:"rel:belongs-to,join:bucket_id=id"`
 	ArchiveID ID        `bun:"archive_id,notnull"`
 	Archive   *Archive  `bun:"rel:belongs-to,join:archive_id=id"`
